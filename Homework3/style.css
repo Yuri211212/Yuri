@@ -1,0 +1,58 @@
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    }
+    th{
+    border: 1px solid black;
+    padding: 80px
+    }
+    td{
+        border: 1px solid black;
+        padding: 40px
+        }
+    .Russia{
+        background: url(russians3.jpg);
+        background-size:cover
+    }
+   .Germany{
+            background: url(germans4.jpg);
+            background-size:cover
+    }
+    .France{
+        background: url(french.jpg);
+        background-size:cover
+    }
+    .Italy{
+        background: url(italians.jpg);
+        background-size:cover
+    }
+    .Sweden{
+        background: url(swedens.jpg);
+        background-size:cover
+    }
+    .Russia a{
+        color: rgba(0, 0, 0, 0.849);
+        font-size: 30px;
+    }
+    .Germany a{
+        color:rgba(238, 254, 255, 0.904);
+        font-size: 30px;
+    }
+    .France a{
+        color:rgb(241, 243, 247);
+        font-size: 30px;
+    } 
+    .Italy a{
+        color:rgba(42, 235, 42, 0.644);
+        font-size: 30px;
+    }
+    .Sweden a{
+        color:rgb(241, 244, 248);
+        font-size: 30px;
+    }
+    td a{
+        color:#162466;
+        font-size: 30px;
+    } 
+    
