@@ -1,0 +1,195 @@
+.container{
+    width: 375px;
+    margin: 0 auto;
+    background-color:#FAFAFA;
+}
+*{
+    margin:0
+}
+/* header styles start */
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 21px;
+    position: sticky;
+    top: 0;
+    background-color: #FAFAFA;
+}
+.username{
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 21px;
+}
+.username__left{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+}
+.username__right img:first-child{
+    position: relative;
+    top: 1px; 
+    right: 20px;
+}
+/* header styles end */
+
+/* section styles start */
+.profile{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.profile__left{
+    size: 86px;
+    padding: 0px 15px;
+}
+.profile__right{
+    width: 100%;
+}
+.profile__numbers{
+    height: 100%;
+    padding:0;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16.5px;
+    line-height: 20px;
+    text-align: center;
+}
+.profile__numbers span{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+.bio{
+    padding:0 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 15px;
+}
+.bio p:first-child{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 4px;
+}
+.bio p:last-child{
+    padding-top: 1px;
+    color:#10467D
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    padding:0 15px;
+    margin-bottom:16px
+}
+.button__follow{
+    width: 149px;
+    height: 30px;
+    background: #3898F3;
+    border: 1px solid #3898F3;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.button__message{
+    width: 148px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1.5px solid #DADADA;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    }
+    .button__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1.5px solid #DADADA;
+    border-radius: 4px;
+    }
+    .stories{
+    margin-bottom:20px;
+    }
+    .stories__images{
+    display: flex;
+    padding-left: 15px;
+    }
+    .stories__images img{
+    margin-right: 15px;
+    border: 1px solid #C7C7C7;
+    border-radius: 50%;
+    }
+    .stories__subtitel{
+    display: flex;
+    padding-top: 4px;
+    padding-left: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    }
+    .stories__subtitel p:nth-child(1),p:nth-child(2){
+    padding-right: 36px;
+    }
+    .main{
+        margin-bottom: 10px;
+    }
+    .main__nav{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 36px;
+    }
+    .main__selector{
+        height: 2px;
+        width: 94px;
+    }
+    .main__pics{
+        padding: 0px;
+        column-count: 3;
+        column-gap: 2px;
+    }
+    .main__pics img{
+        size: 124px;
+    }
+    /* main styles end */
+    
+    /* footer styles start */
+    footer{
+    position: sticky;
+    bottom: 0;
+    background-color: #FAFAFA;
+    }
+    .footer__pics{
+        display: flex;
+        justify-content: space-between;
+        padding:0 20px;
+    }
+    .footer__pics img:last-child{
+        position:relative;
+        top:5px
+    }
+  .footer__selector{
+      padding:0 120px;
+  }
+   /* footer styles end */
