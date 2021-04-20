@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Слишком много вложенных тегов. Ты мог уже сразу задать стили для header. А у тебя тег <header class="header">, внутри него тег <div class="wrapper">, внутри него <div class="header_wrapper">. И только ему задаешь стили. -->
     <header class="header">
         <div class="wrapper">
             <div class="header_wrapper">
@@ -46,9 +47,12 @@
     <main class="main">
         <div class="wrapper">
             <section class="intro">
-    
+                <!--  Не правильно задал стили для h1. Ты задал padding-top: 600px; Так не желательно делать. Нельзя решать задачи с такими большими отступами -->
+                <!--  Надо было h1 и button обернуть в общий div. Потои section или классу intro задать:     display:flex;  justify-content:center;  align-items:center;   и твоя надпись с кнопкой станут по центру  -->
+               <div>
                 <h1 class="intro_titel">The largest community of photo enthusiasts</h1>
                 <button class="button_intro">Join today</button>
+               </div>
             </section>
         </div>
     </main>
