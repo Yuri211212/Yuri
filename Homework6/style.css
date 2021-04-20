@@ -3,6 +3,7 @@
     margin: 0 auto;
     background-color:#FAFAFA;
 }
+/*  Вот этот стиль * лучше поставить самым первым. Так как по иерархии она стоит выше всех */
 *{
     margin:0
 }
@@ -13,7 +14,7 @@ header{
     padding: 14px 21px;
     position: sticky;
     top: 0;
-    background-color: #FAFAFA;
+    background-color: #FAFAFA;  /* Не нужно, так как ты для container задал - background-color: #FAFAFA;   */
 }
 .username{
     display: flex;
@@ -41,7 +42,7 @@ header{
     margin-bottom: 15px;
 }
 .profile__left{
-    size: 86px;
+    size: 86px;         /* Не нужно   */
     padding: 0px 15px;
 }
 .profile__right{
