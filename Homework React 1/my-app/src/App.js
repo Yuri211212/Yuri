@@ -1,12 +1,12 @@
 import './App.css';
-import { Mainblock } from './components/mainblock';
-import { Header } from './components/header';
+import { Button } from './components/Button';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <div className="App">
-    <Header name='Header'/>
-    <Mainblock/>
+    <Header name='React'/>
+    <Button/>
     </div>
   );
 }
