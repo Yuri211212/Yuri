@@ -1,3 +1,6 @@
-.header__div{
-background-color:rgba(26, 86, 165, 0.733)
+.header__ul{
+background-color:rgba(143, 183, 235, 0.733)
+}
+li{
+list-style-type: none;
 }

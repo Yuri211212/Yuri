@@ -1,4 +1,5 @@
 .button{
-    color:red;
-    border: 1px dotted black;
+    color:rgb(0, 17, 255);
+    border: 1px dotted rgb(0, 0, 0);
+    background-color: rgb(137, 171, 235);
 }
