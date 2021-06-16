@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionCreateTodo } from '../../store/todos';
+import React from 'react';
+import PropTypes from 'prop-types'
+import { ListGroup } from 'react-bootstrap' ;
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const Profile = () => {
+import { Input } from '../Input';
+import { Mainbutton } from '../Mainbutton';
 
-const [localState, setLocalSet] = useState ('');    
-const changeInput = (event) => {
-setLocalSet (event.target.value)   
-};
+import './styles.scss';
 
-const myList = useSelector((state) => state.taska);
-const dispatch = useDispatch();
+export const Profile = ({localState, myList, addToMyList, changeInput, deleteFromMyList}) => {
 
-const addToMyList = () => {
-const data = {title: localState,
-id: Date.now()
-}
-dispatch(actionCreateTodo(data))
-};
 
- 
-return <div>
-<input placeholder="Добавьте задачу"value={localState} onChange={(event) => changeInput (event)}></input>
-<button onClick={addToMyList}>Внести задачу</button>
-{myList.task.map((item) => <li key={item.id}>{item.title}</li>)}
+return <div className="toDoList">
+<Input placeholder="Введите задачу" value={localState} onChange={(event) => changeInput (event)}/>
+<Mainbutton onClick={addToMyList} variant="primary" name="Добавить"></Mainbutton>
+<ListGroup>
+    {myList.task.map((item) => <ListGroup.Item className="toDoList__item" key={item.id}>{item.title}<Mainbutton onClick={() => deleteFromMyList (item.id)} variant="danger"name="Удалить"></Mainbutton></ListGroup.Item>)}
+</ListGroup>
 </div>
+};
+
+Profile.propTypes = {
+    localState:PropTypes.object,
+    myList:PropTypes.string,
+    addToMyList:PropTypes.func,
+    changeInput:PropTypes.func,
+    deleteFromMyList:PropTypes.func,
 }
+

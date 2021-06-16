@@ -1,14 +1,12 @@
-import './App.css';
-import { Button } from './components/Button';
+import './App.scss';
 import { Header } from './components/Header';
-import { Homepage } from './pages';
+import ProfileContainer from './container/ProfileContainer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
    <Header/>
-    <Button/>
-    <Homepage/>
+   <div className="app__wrapper"><ProfileContainer/></div> 
     
     </div>
   );

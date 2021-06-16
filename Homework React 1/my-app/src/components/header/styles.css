@@ -1,6 +1,7 @@
 .header__ul{
-background-color:rgba(143, 183, 235, 0.733)
-}
-li{
+height: 100px;
+background-color:rgba(143, 183, 235, 0.733);
 list-style-type: none;
-}
+display: flex;
+justify-content: center
+};
