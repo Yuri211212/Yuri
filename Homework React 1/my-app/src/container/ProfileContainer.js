@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { actionCreateTodo, actionDeleteTodo, getTodosThunk } from '../store/todos';
+import { actionCreateTodo, actionDeleteTodo, getTodosThunk, actionGetTodosLocalStorage, actionRemoveAllTodos } from '../store/todos';
 
 import { Profile } from '../components/Profile';
 
@@ -31,8 +31,24 @@ class ProfileContainer extends React.Component {
         this.props.deleteFromMyList(idFromRemoved)
     };
 
+    saveToLocalStorage = () => {
+        window.localStorage.setItem('tasks', JSON.stringify(this.props.myList))
+    };
+
+    getFromLocalStorage = () => {
+        const savedTasks = window.localStorage.getItem('tasks')
+        const resultJSON = JSON.parse(savedTasks)
+        resultJSON && this.props.getFromLocalStorage(resultJSON.task)
+    };
+
+    deleteFromLocalStorage = () => {
+        window.localStorage.removeItem('tasks')
+        this.props.deleteFromLocalStorage()
+    };
+
     componentDidMount() {
-        this.props.getTodosThunk()
+        this.getFromLocalStorage()
+        // this.props.getTodosThunk()
     };
 
     render() {
@@ -41,7 +57,9 @@ class ProfileContainer extends React.Component {
             myList={this.props.myList}
             addToMyList={this.addToMyList}
             changeInput={this.changeInput}
-            deleteFromMyList={this.deleteFromMyList} />
+            deleteFromMyList={this.deleteFromMyList}
+            saveToLocalStorage={this.saveToLocalStorage}
+            deleteFromLocalStorage={this.deleteFromLocalStorage} />
     }
 };
 
@@ -53,7 +71,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToMyList: (data) => dispatch(actionCreateTodo(data)),
         deleteFromMyList: (data) => dispatch(actionDeleteTodo(data)),
-        getTodosThunk: () => dispatch(getTodosThunk())
+        getTodosThunk: () => dispatch(getTodosThunk()),
+        getFromLocalStorage: (data) => dispatch(actionGetTodosLocalStorage(data)),
+        deleteFromLocalStorage: () => dispatch(actionRemoveAllTodos())
     }
 };
 
