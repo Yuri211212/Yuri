@@ -23,7 +23,8 @@ class ProfileContainer extends React.Component {
             title: this.state.localState,
             id: Date.now()
         }
-        this.props.addToMyList(data)
+        this.props.addToMyList(data);
+        this.setState({ localState: '' });
     };
 
     deleteFromMyList = (idFromRemoved) => {

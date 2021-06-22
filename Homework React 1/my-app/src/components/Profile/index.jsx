@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Input } from '../Input';
 import { ButtonMain } from '../ButtonMain';
+import { Spiner } from '../Spiner';
 
 import './styles.scss';
-import { Spiner } from '../Spiner';
 
 export const Profile = ({ localState, myList, addToMyList, changeInput, deleteFromMyList }) => {
     return <div className="toDoList">
@@ -19,7 +19,7 @@ export const Profile = ({ localState, myList, addToMyList, changeInput, deleteFr
                     {item.title}
                     <ButtonMain onClick={() => deleteFromMyList(item.id)} variant="danger" name="Удалить" />
                 </ListGroup.Item>
-            }) : <Spiner />}
+            }) : <Spiner animation="grow" variant="primary" />}
         </ListGroup>
     </div>
 };
