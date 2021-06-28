@@ -1,13 +1,11 @@
 const initState = {
-    category: [
-        {title: 'Важные дела', id: 1},
-        {title: 'Менее важные дела', id: 2}
-    ]
+    category: []
 };
 
 const actionType = {
     ADD_CATEGORY: 'ADD_CATEGORY',
     DELETE_CATEGORY: 'DELETE_CATEGORY',
+    EDIT_CATEGORY: 'EDIT_CATEGORY',
 };
 
 export const actionCreateCategory = (payload) => {
@@ -24,12 +22,21 @@ export const actionDeleteCategory = (payload) => {
     }
 };
 
+export const actionEditCategory = (payload) => {
+    return {
+        type: actionType.EDIT_CATEGORY,
+        payload
+    }
+};
+
 export const categoryReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.ADD_CATEGORY:
             return { ...state, category: [...state.category, action.payload] }
         case actionType.DELETE_CATEGORY:
             return { ...state, category: state.category.filter((item) => item.id !== action.payload) }
+        case actionType.EDIT_CATEGORY:
+            return { ...state, category: state.category.map((item) => item.id === action.payload.id ? { ...item, ...action.payload } : item) }
         default:
             return state;
     }

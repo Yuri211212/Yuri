@@ -11,6 +11,7 @@ export const rootReducer = combineReducers({
     category: categoryReducer,
 }
 );
+
 export const configureStore = () => {
     const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, ...middlewares)));
     return store;

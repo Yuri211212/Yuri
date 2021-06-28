@@ -8,15 +8,16 @@ import { ButtonMain } from '../ButtonMain';
 
 import './styles.scss';
 
-export const Category = ({ categories, todoID, change, handlerAddToCategory, handlerChangeInput, deleteFromCategory }) => {
+export const Category = ({ categories, todoID, change, handlerAddToCategory, handlerChangeInput, deleteFromCategory, handlerCheckedCategory }) => {
     return <div className="categoryList">
         <Input placeholder="Введите категорию" value={change} onChange={(event) => handlerChangeInput(event)} />
         <ButtonMain onClick={handlerAddToCategory} variant="primary" name="Добавить"></ButtonMain>
         <ListGroup>
             {categories.category.map((item) => {
                 return item.todoID === todoID ?
-                    <ListGroup.Item className="toDoList__item" key={item.id}>
+                    <ListGroup.Item className="categoryList__item" key={item.id}>
                         {item.title}
+                        <Input type="checkbox" onChange={(event) => handlerCheckedCategory(event, item.id)} />
                         <ButtonMain onClick={() => deleteFromCategory(item.id)} variant="danger" name="Удалить"></ButtonMain>
                     </ListGroup.Item> : null
             })}

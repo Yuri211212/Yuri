@@ -22,8 +22,10 @@ export const Profile = ({ localState, myList, addToMyList, changeInput, deleteFr
                 </ListGroup.Item>
                 </NavLink>
             }) : <Spiner animation="grow" variant="primary" />}
+            <br></br>
             <ButtonMain variant="primary" name="Сохранить задачи" onClick={saveToLocalStorage} />
-            <ButtonMain variant="danger" name="Удалить все задачи" onClick={deleteFromLocalStorage} />
+            <br></br>
+            <ButtonMain variant="secondary" name="Удалить все задачи" onClick={deleteFromLocalStorage} />
         </ListGroup>
 
     </div>
