@@ -4,11 +4,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { taskReducer } from './todos'
 import { categoryReducer } from './category';
+import { modalsReducer } from './modals'
 
 const middlewares = [];
 export const rootReducer = combineReducers({
     taska: taskReducer,
-    category: categoryReducer,
+    categoryReducer,
+    modalsReducer
 }
 );
 

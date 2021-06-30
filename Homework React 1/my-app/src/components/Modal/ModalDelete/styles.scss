@@ -1,0 +1,17 @@
+.modal{
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    background: rgb(202, 179, 179);;
+    &__wrapper{
+    padding: 15px;
+    }
+    &__buttons{
+    display: flex;
+    justify-content: space-around;
+    }   
+}

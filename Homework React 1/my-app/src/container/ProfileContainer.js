@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { actionCreateTodo, actionDeleteTodo, getTodosThunk, actionGetTodosLocalStorage, actionRemoveAllTodos } from '../store/todos';
+import { actionCreateTodo, getTodosThunk, actionGetTodosLocalStorage, actionRemoveAllTodos } from '../store/todos';
+import { actionShowModal, actionHideModal } from '../store/modals';
 
 import { Profile } from '../components/Profile';
 
@@ -27,8 +28,8 @@ class ProfileContainer extends React.Component {
         this.setState({ localState: '' });
     };
 
-    deleteFromMyList = (idFromRemoved) => {
-        this.props.deleteFromMyList(idFromRemoved)
+    deleteFromMyList = (idFromRemoved, titleToDo) => {
+        this.props.actionShowModal({ name: 'modalDelete', id: idFromRemoved, title:titleToDo, })
     };
 
     saveToLocalStorage = () => {
@@ -70,10 +71,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToMyList: (data) => dispatch(actionCreateTodo(data)),
-        deleteFromMyList: (data) => dispatch(actionDeleteTodo(data)),
         getTodosThunk: () => dispatch(getTodosThunk()),
         getFromLocalStorage: (data) => dispatch(actionGetTodosLocalStorage(data)),
-        deleteFromLocalStorage: () => dispatch(actionRemoveAllTodos())
+        deleteFromLocalStorage: () => dispatch(actionRemoveAllTodos()),
+        actionShowModal:(data) => dispatch(actionShowModal(data)),
+        actionHideModal:() => dispatch(actionHideModal())
     }
 };
 

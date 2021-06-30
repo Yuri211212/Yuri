@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { ListGroup } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Input } from '../Input';
 import { ButtonMain } from '../ButtonMain';
 import { Spiner } from '../Spiner';
 
+import { ListGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.scss';
 
 export const Profile = ({ localState, myList, addToMyList, changeInput, deleteFromMyList, saveToLocalStorage, deleteFromLocalStorage }) => {
@@ -18,7 +18,7 @@ export const Profile = ({ localState, myList, addToMyList, changeInput, deleteFr
             {myList.task.length ? myList.task.map((item) => {
                 return <NavLink to={`/todo/${item.id}`} key={item.id}><ListGroup.Item className="toDoList__item" key={item.id}>
                     {item.title}
-                    <ButtonMain onClick={() => deleteFromMyList(item.id)} variant="danger" name="Удалить" />
+                    <ButtonMain onClick={() => deleteFromMyList(item.id, item.title)} variant="danger" name="Удалить" />
                 </ListGroup.Item>
                 </NavLink>
             }) : <Spiner animation="grow" variant="primary" />}

@@ -1,5 +1,7 @@
 import './App.scss';
 import { Header } from './components/Header';
+import Modal from './components/Modal';
+import SearchCategory from './components/SearchCategory';
 import CategoryContainer from './container/CategoryContainer';
 import ProfileContainer from './container/ProfileContainer';
 import { ProgressBarContainer } from './container/ProgressBarContainer';
@@ -12,9 +14,12 @@ function App() {
         <Header />
       </Test.Provider>
       <ProgressBarContainer />
+      <SearchCategory/>
       <div className="app__wrapper">
-        <ProfileContainer /><CategoryContainer />
+      <ProfileContainer /><CategoryContainer />
       </div>
+      <Modal/>
+      
     </div>
   );
 }
