@@ -1,0 +1,34 @@
+.todo{
+    width: 300px;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__header > input {
+        width:190px
+    }
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        word-break: break-all;
+        margin-top: 10px;
+        cursor: pointer;    
+    }
+    &__group-buttons{
+        margin-top: 10px;
+    }
+    &__group-buttons > button{
+        width: 300px;
+    }
+
+    &__group-buttons > button:nth-child(2) {
+    margin-top: 10px;
+    }
+    &__group-icons{
+        display: flex;
+        justify-content: space-between;
+    }  
+    &__group-icons > img{
+        margin: 0px 10px;
+    }         
+    };

@@ -2,7 +2,7 @@ const initState = [];
 
 const actionType = {
     SHOW_MODAL: 'SHOW_MODAL',
-    HIDE_MODAL: 'HIDE_MODAL',
+    HIDE_MODAL: 'HIDE_MODAL'
 };
 
 export const actionShowModal = (payload) => {

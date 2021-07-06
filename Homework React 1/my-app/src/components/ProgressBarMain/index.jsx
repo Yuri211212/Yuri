@@ -6,7 +6,7 @@ import { ProgressBar } from 'react-bootstrap';
 
 export const ProgressBarMain = ({ completedCategory }) => {
     return <ProgressBar animated now={completedCategory} />
-}
+};
 
 ProgressBarMain.propTypes = {
     completedCategory: PropTypes.number,

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useRouteMatch } from 'react-router';
 
 import { actionCreateCategory, actionDeleteCategory, actionEditCategory } from '../store/category';
+import { actionShowModal } from '../store/modals';
 
 import { Category } from '../components/Category';
 
@@ -41,6 +42,10 @@ export default function CategoryContainer() {
         setChange('');
     };
 
+    const showModalCategory = (categoryId) => {
+        dispatch(actionShowModal({ name: 'modalEditCategory', categoryId }))
+    };
+
     const handlerCheckedCategory = (event, categoryID) => {
         const data = {
             checked: event.target.checked,
@@ -48,6 +53,7 @@ export default function CategoryContainer() {
         }
         dispatch(actionEditCategory(data));
     };
+
     const deleteFromCategory = (idFromRemoved) => {
         dispatch(actionDeleteCategory(idFromRemoved))
     };
@@ -59,5 +65,6 @@ export default function CategoryContainer() {
         handlerAddToCategory={handlerAddToCategory}
         handlerChangeInput={handlerChangeInput}
         deleteFromCategory={deleteFromCategory}
-        handlerCheckedCategory={handlerCheckedCategory} />
+        handlerCheckedCategory={handlerCheckedCategory}
+        showModalCategory={showModalCategory} />
 };

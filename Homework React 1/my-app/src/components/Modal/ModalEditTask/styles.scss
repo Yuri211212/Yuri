@@ -1,6 +1,6 @@
 @import '../../../styles/mixins.scss';
 
-.modalConfirm{
+.modalEditTask{
     @include centerPosition();
     min-height: 200px;
     min-width: 400px;
@@ -8,7 +8,11 @@
     border-radius: 3px;
     border: 1px solid black;
     padding: 40px;
+    &__header > input {
+        width:100%
+    }
     &__buttons{
+        margin-top: 15px;
         display: flex;
         justify-content: space-around;
     }   

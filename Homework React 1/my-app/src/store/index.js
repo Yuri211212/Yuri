@@ -1,14 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { taskReducer } from './todos'
+import { taskReducer } from './todos';
 import { categoryReducer } from './category';
-import { modalsReducer } from './modals'
+import { modalsReducer } from './modals';
 
 const middlewares = [];
 export const rootReducer = combineReducers({
-    taska: taskReducer,
+    taskReducer,
     categoryReducer,
     modalsReducer
 }

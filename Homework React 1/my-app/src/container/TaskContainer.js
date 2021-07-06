@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { actionCreateTodo, getTodosThunk, actionGetTodosLocalStorage, actionRemoveAllTodos } from '../store/todos';
 import { actionShowModal, actionHideModal } from '../store/modals';
 
-import { Profile } from '../components/Profile';
+import { Task } from '../components/Task';
 
-class ProfileContainer extends React.Component {
+class TaskContainer extends React.Component {
     constructor() {
         super()
     };
@@ -23,13 +23,17 @@ class ProfileContainer extends React.Component {
         const data = {
             title: this.state.localState,
             id: Date.now()
+        };
+        if (!this.state.localState) {
+            return console.log("Поле пустое")
         }
         this.props.addToMyList(data);
         this.setState({ localState: '' });
+
     };
 
     deleteFromMyList = (idFromRemoved, titleToDo) => {
-        this.props.actionShowModal({ name: 'modalDelete', id: idFromRemoved, title:titleToDo, })
+        this.props.actionShowModal({ name: 'modalDelete', id: idFromRemoved, title: titleToDo })
     };
 
     saveToLocalStorage = () => {
@@ -52,20 +56,25 @@ class ProfileContainer extends React.Component {
         // this.props.getTodosThunk()
     };
 
+    showEditTaskModal = (taskId) => {
+        this.props.actionShowModal({ name: 'modalEditTask', taskId })
+    };
+
     render() {
-        return <Profile
+        return <Task
             localState={this.state.localState}
             myList={this.props.myList}
             addToMyList={this.addToMyList}
             changeInput={this.changeInput}
             deleteFromMyList={this.deleteFromMyList}
             saveToLocalStorage={this.saveToLocalStorage}
-            deleteFromLocalStorage={this.deleteFromLocalStorage} />
+            deleteFromLocalStorage={this.deleteFromLocalStorage}
+            showEditTaskModal={this.showEditTaskModal} />
     }
 };
 
 const mapStateToProps = (state) => {
-    return { myList: state.taska }
+    return { myList: state.taskReducer }
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -74,9 +83,9 @@ const mapDispatchToProps = (dispatch) => {
         getTodosThunk: () => dispatch(getTodosThunk()),
         getFromLocalStorage: (data) => dispatch(actionGetTodosLocalStorage(data)),
         deleteFromLocalStorage: () => dispatch(actionRemoveAllTodos()),
-        actionShowModal:(data) => dispatch(actionShowModal(data)),
-        actionHideModal:() => dispatch(actionHideModal())
+        actionShowModal: (data) => dispatch(actionShowModal(data)),
+        actionHideModal: () => dispatch(actionHideModal())
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(TaskContainer)

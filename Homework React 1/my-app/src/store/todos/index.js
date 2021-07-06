@@ -7,7 +7,8 @@ const actionType = {
     DELETE_TASK: 'DELETE_TASK',
     SET_TODOS: 'SET_TODOS',
     GET_TODOS_LOCAL_STORAGE: 'GET_TODOS_LOCAL_STORAGE',
-    REMOVE_ALL_TODOS: 'REMOVE_ALL_TODOS'
+    REMOVE_ALL_TODOS: 'REMOVE_ALL_TODOS',
+    EDIT_TODOS: 'EDIT_TODOS'
 };
 
 export const actionCreateTodo = (payload) => {
@@ -44,6 +45,13 @@ export const actionRemoveAllTodos = () => {
     }
 };
 
+export const actionEditTodo = (payload) => {
+    return {
+        type: actionType.EDIT_TODOS,
+        payload
+    }
+};
+
 export const taskReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.ADD_TASK:
@@ -56,6 +64,8 @@ export const taskReducer = (state = initState, action) => {
             return { ...state, task: [...state.task, ...action.payload] }
         case actionType.REMOVE_ALL_TODOS:
             return { ...state, task: [] }
+        case actionType.EDIT_TODOS:
+                return { ...state, task: state.task.map((item) => item.id === action.payload.taskId ? {...item, title: action.payload.title} : item)}
         default:
             return state;
     }

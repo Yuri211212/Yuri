@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function Input({ placeholder, value, onChange, type }) {
-    return <input placeholder={placeholder} value={value} onChange={onChange} type={type}></input>
+export function Input({ placeholder, value, onChange, type, checked }) {
+    return <input placeholder={placeholder} value={value} checked={checked} onChange={onChange} type={type}></input>
 };
 
 Input.propTypes = {

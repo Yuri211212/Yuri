@@ -1,34 +1,26 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-
-import { actionDeleteTodo } from '../../../store/todos';
-import { actionHideModal } from '../../../store/modals';
+import PropTypes from 'prop-types';
 
 import { ButtonMain } from '../../ButtonMain';
 
 import './styles.scss';
 
-export default function ModalDelete({ title, id }) {
-    const dispatch = useDispatch();
-
-    const handlerDeleteTaskfromModal = () => {
-        dispatch(actionDeleteTodo(id));
-        handlerHideModal()
-    };
-
-    const handlerHideModal = () => {
-        dispatch(actionHideModal())
-    };
-
-    return (
-        <div className='modal'>
-            <div className='modal__wrapper'>
-                <p>Вы действительно хотите удалить <strong>{title}</strong>? </p>
-                <div className='modal__buttons'>
+export const ModalDelete = ({ handlerDeleteTaskfromModal,
+    handlerHideModal,
+    title }) => {
+    return <>
+        <div className='modalConfirm'>
+            <p>Вы действительно хотите удалить <strong>{title}</strong>? </p>
+            <div className='modalConfirm__buttons'>
                 <ButtonMain variant="danger" name="Удалить" onClick={handlerDeleteTaskfromModal} />
                 <ButtonMain variant="primary" name="Отмена" onClick={handlerHideModal} />
-                </div>
             </div>
         </div>
-    )
+    </>
+};
+
+ModalDelete.propTypes = {
+    handlerDeleteTaskfromModal: PropTypes.func,
+    handlerHideModal: PropTypes.func,
+    title: PropTypes.string
 };

@@ -1,7 +1,21 @@
-.categoryList{
-    &__item{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;    
-    }        
-    };
+.category{
+    width:400px;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__header > input {
+        width:290px
+    }
+    &__list{
+        margin-top: 10px;     
+        cursor: pointer;
+    }  
+    &__content{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__group > input{
+        margin: 0px 10px;
+    }    
+};

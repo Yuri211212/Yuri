@@ -18,7 +18,7 @@ export default function SearchCategory() {
         setValue(event.target.value)
     };
 
-    return <div className="search__input"> 
-    <Input placeholder="поиск категории" value={value} onChange={handlerSetUrlValue} />
+    return <div className="search__input">
+        <Input placeholder="Поиск категории" value={value} onChange={handlerSetUrlValue} />
     </div>
 };

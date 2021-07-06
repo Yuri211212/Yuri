@@ -1,0 +1,12 @@
+@import '../../../styles/mixins.scss';
+
+.modalEditCategory{
+@include centerPosition(); 
+display:flex;
+min-height: 400px;
+min-width: 900px;
+background: rgb(233, 225, 225);
+border-radius: 3px;
+border: 1px solid black;
+padding: 40px;
+}

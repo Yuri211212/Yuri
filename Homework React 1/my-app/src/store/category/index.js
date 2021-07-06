@@ -6,6 +6,7 @@ const actionType = {
     ADD_CATEGORY: 'ADD_CATEGORY',
     DELETE_CATEGORY: 'DELETE_CATEGORY',
     EDIT_CATEGORY: 'EDIT_CATEGORY',
+    TRANSFER_CATEGORY: 'TRANSFER_CATEGORY'
 };
 
 export const actionCreateCategory = (payload) => {
@@ -29,6 +30,13 @@ export const actionEditCategory = (payload) => {
     }
 };
 
+export const actionTransferCategory = (payload) => {
+    return {
+        type: actionType.TRANSFER_CATEGORY,
+        payload
+    }
+};
+
 export const categoryReducer = (state = initState, action) => {
     switch (action.type) {
         case actionType.ADD_CATEGORY:
@@ -36,7 +44,9 @@ export const categoryReducer = (state = initState, action) => {
         case actionType.DELETE_CATEGORY:
             return { ...state, category: state.category.filter((item) => item.id !== action.payload) }
         case actionType.EDIT_CATEGORY:
-            return { ...state, category: state.category.map((item) => item.id === action.payload.id ? { ...item, ...action.payload } : item) }
+            return { ...state, category: state.category.map((item) => item.id === action.payload.id ? { ...item, checked: action.payload.checked } : item) }
+        case actionType.TRANSFER_CATEGORY:
+            return { ...state, category: state.category.map((item) => item.id === action.payload.categoryId ? { ...item, todoID: action.payload.todoId } : item) }
         default:
             return state;
     }
