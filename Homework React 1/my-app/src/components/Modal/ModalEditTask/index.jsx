@@ -13,7 +13,7 @@ export const ModalEditTask = ({ value,
     handlerEditTask }) => {
     return <div className="modalEditTask">
         <div className='modalEditTask__header'>
-            <p>Вы редактируете:  <strong>{findTask}</strong> </p>
+            <p>Вы редактируете задачу <strong>"{findTask}"</strong> </p>
             <Input value={value} onChange={(event) => handlerChangeInput(event)}></Input>
         </div>
         <div className='modalEditTask__buttons'>

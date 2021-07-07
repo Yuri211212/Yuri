@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Input } from '../Input';
 import { ButtonMain } from '../ButtonMain';
 import { ImageMain } from '../ImageMain';
-import { editIcon } from '../../static';
+import { deleteIcon, editIcon } from '../../static';
 
 import { ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,9 +29,9 @@ export const Category = ({ category,
                     <div className="category__content">
                         {item.title}
                         <div className="category__group">
-                            <ImageMain src={editIcon} alt="Редактировать" onClick={() => showModalCategory(item.id)} />
                             <Input type="checkbox" checked={item.checked} onChange={(event) => handlerCheckedCategory(event, item.id)} />
-                            <ButtonMain onClick={() => deleteFromCategory(item.id)} variant="danger" name="Удалить"></ButtonMain>
+                            <ImageMain src={editIcon} alt="Редактировать" onClick={() => showModalCategory(item.id)} />
+                            <ImageMain src={deleteIcon} alt="Удалить" onClick={() => deleteFromCategory(item.id, item.title)} />
                         </div>
                     </div>
                 </ListGroup.Item> : null

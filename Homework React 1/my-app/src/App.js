@@ -10,17 +10,17 @@ import { Test } from './contextContext/index';
 function App() {
   return (
     <div className="app">
-      <Test.Provider value={{ value: "TODO list" }}>
+      <Test.Provider value={{ value: "To-do application" }}>
         <Header />
       </Test.Provider>
       <ProgressBarContainer />
-      <SearchCategory/>
+      <SearchCategory />
       <div className="app__wrapper">
-      <TaskContainer />
-      <CategoryContainer />
+        <TaskContainer />
+        <CategoryContainer />
       </div>
-      <Modal/>
-      
+      <Modal />
+
     </div>
   );
 }

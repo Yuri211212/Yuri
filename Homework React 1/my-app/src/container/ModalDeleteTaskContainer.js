@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { actionHideModal } from '../store/modals';
 import { actionDeleteTodo } from '../store/todos';
 
-import { ModalDelete } from '../components/Modal/ModalDelete';
+import { ModalDeleteTask } from '../components/Modal/ModalDeleteTask';
 
-export default function ModalDeleteContainer({ title, id }) {
+export default function ModalDeleteTaskContainer({ title, id }) {
     const dispatch = useDispatch();
 
     const handlerDeleteTaskfromModal = () => {
@@ -19,13 +19,13 @@ export default function ModalDeleteContainer({ title, id }) {
         dispatch(actionHideModal())
     };
 
-    return <ModalDelete
+    return <ModalDeleteTask
         handlerDeleteTaskfromModal={handlerDeleteTaskfromModal}
         handlerHideModal={handlerHideModal}
         title={title} />
 };
 
-ModalDeleteContainer.propTypes = {
+ModalDeleteTaskContainer.propTypes = {
     title: PropTypes.string,
     id: PropTypes.number
 };

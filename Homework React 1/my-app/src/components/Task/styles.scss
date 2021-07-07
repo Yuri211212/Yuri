@@ -1,15 +1,19 @@
+@import '../../styles/mixins.scss';
+
 .todo{
-    width: 300px;
+    max-width: 300px;
+    &__lists{
+        max-height: 500px;
+        overflow-y: scroll; 
+    }
     &__header{
-        display: flex;
-        justify-content: space-between;
+        @include flexSpaceBetween()
     }
     &__header > input {
         width:190px
     }
     &__item{
-        display: flex;
-        justify-content: space-between;
+        @include flexSpaceBetween();
         word-break: break-all;
         margin-top: 10px;
         cursor: pointer;    
@@ -20,13 +24,11 @@
     &__group-buttons > button{
         width: 300px;
     }
-
     &__group-buttons > button:nth-child(2) {
-    margin-top: 10px;
+        margin-top: 10px;
     }
     &__group-icons{
-        display: flex;
-        justify-content: space-between;
+        @include flexSpaceBetween();
     }  
     &__group-icons > img{
         margin: 0px 10px;

@@ -1,10 +1,11 @@
+@import '../src/styles/mixins.scss';
+
 .app{
   &__wrapper{
   margin-top: 20px;
-  margin-left: 250px;
+  margin-left: 20%;
   max-width: 1000px;
-  display: flex;
-  justify-content: space-between;
-  }
-
+  max-height: 500px;
+  @include flexSpaceBetween();
+}
 }

@@ -1,26 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { ButtonMain } from '../../ButtonMain';
 
 import './styles.scss';
 
-export const ModalDelete = ({ handlerDeleteTaskfromModal,
-    handlerHideModal,
+export const ModalDeleteCategory = ({ handlerHideModal,
+    handlerDeleteCategoryFromModal,
     title }) => {
     return <>
         <div className='modalConfirm'>
-            <p>Вы действительно хотите удалить <strong>{title}</strong>? </p>
+            <p>Вы действительно хотите удалить <strong>"{title}"</strong>? </p>
             <div className='modalConfirm__buttons'>
-                <ButtonMain variant="danger" name="Удалить" onClick={handlerDeleteTaskfromModal} />
+                <ButtonMain variant="danger" name="Удалить" onClick={handlerDeleteCategoryFromModal} />
                 <ButtonMain variant="primary" name="Отмена" onClick={handlerHideModal} />
             </div>
         </div>
     </>
 };
 
-ModalDelete.propTypes = {
-    handlerDeleteTaskfromModal: PropTypes.func,
+ModalDeleteCategory.propTypes = {
+    title: PropTypes.string,
+    handlerDeleteCategoryFromModal: PropTypes.func,
     handlerHideModal: PropTypes.func,
-    title: PropTypes.string
 };

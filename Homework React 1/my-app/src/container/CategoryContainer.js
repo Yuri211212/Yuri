@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useRouteMatch } from 'react-router';
 
-import { actionCreateCategory, actionDeleteCategory, actionEditCategory } from '../store/category';
+import { actionCreateCategory, actionEditCategory } from '../store/category';
 import { actionShowModal } from '../store/modals';
 
 import { Category } from '../components/Category';
@@ -33,7 +33,8 @@ export default function CategoryContainer() {
             title: change,
             id: Date.now(),
             checked: false,
-            todoID
+            todoID,
+            description: '',
         };
         if (!change) {
             return console.log("Поле пустое")
@@ -54,8 +55,8 @@ export default function CategoryContainer() {
         dispatch(actionEditCategory(data));
     };
 
-    const deleteFromCategory = (idFromRemoved) => {
-        dispatch(actionDeleteCategory(idFromRemoved))
+    const deleteFromCategory = (idFromRemoved, title) => {
+        dispatch(actionShowModal({ name: 'modalDeleteCategory', idFromRemoved, title }))
     };
 
     return <Category

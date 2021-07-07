@@ -33,7 +33,7 @@ class TaskContainer extends React.Component {
     };
 
     deleteFromMyList = (idFromRemoved, titleToDo) => {
-        this.props.actionShowModal({ name: 'modalDelete', id: idFromRemoved, title: titleToDo })
+        this.props.actionShowModal({ name: 'modalDeleteTask', id: idFromRemoved, title: titleToDo })
     };
 
     saveToLocalStorage = () => {
