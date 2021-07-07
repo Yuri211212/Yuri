@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 
 import { actionCreateTodo, getTodosThunk, actionGetTodosLocalStorage, actionRemoveAllTodos } from '../store/todos';
 import { actionShowModal, actionHideModal } from '../store/modals';
+import { getTasks } from '../store/todos/selectors';
 
 import { Task } from '../components/Task';
+
+const enums = {
+    tasks: 'tasks'
+};
 
 class TaskContainer extends React.Component {
     constructor() {
@@ -37,17 +42,17 @@ class TaskContainer extends React.Component {
     };
 
     saveToLocalStorage = () => {
-        window.localStorage.setItem('tasks', JSON.stringify(this.props.myList))
+        window.localStorage.setItem(enums.tasks, JSON.stringify(this.props.myList))
     };
 
     getFromLocalStorage = () => {
-        const savedTasks = window.localStorage.getItem('tasks')
+        const savedTasks = window.localStorage.getItem(enums.tasks)
         const resultJSON = JSON.parse(savedTasks)
         resultJSON && this.props.getFromLocalStorage(resultJSON.task)
     };
 
     deleteFromLocalStorage = () => {
-        window.localStorage.removeItem('tasks')
+        window.localStorage.removeItem(enums.tasks)
         this.props.deleteFromLocalStorage()
     };
 
@@ -74,7 +79,7 @@ class TaskContainer extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-    return { myList: state.taskReducer }
+    return { myList: getTasks(state) }
 };
 
 const mapDispatchToProps = (dispatch) => {

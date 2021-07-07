@@ -9,6 +9,10 @@
         width:290px
     }
     &__list{
+        max-height: 600px;
+        overflow-y: scroll;
+    } 
+    &__list-element{
         margin-top: 10px;     
         cursor: pointer;
     }  

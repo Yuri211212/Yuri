@@ -8,6 +8,8 @@ import { Spiner } from '../Spiner';
 import { ImageMain } from '../ImageMain';
 import { deleteIcon, editIcon, transferIcon } from '../../static';
 
+import { home } from '../../mockData';
+
 import { ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,7 +36,7 @@ export const Task = ({ localState,
         <div className="todo__lists">
             <ListGroup>
                 {myList.task.length ? myList.task.map((item) => {
-                    return <NavLink to={`/todo/${item.id}`} key={item.id}><ListGroup.Item className="todo__item" key={item.id}>
+                    return <NavLink to={home.todoId(item.id)} key={item.id}><ListGroup.Item className="todo__item" key={item.id}>
                         {item.title}
                         {!name ?
                             <div className="todo__group-icons">

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalEditTask } from '../components/Modal/ModalEditTask';
+
 import { actionHideModal } from '../store/modals';
 import { actionEditTodo } from '../store/todos';
+import { getTasks } from '../store/todos/selectors';
+
+import { ModalEditTask } from '../components/Modal/ModalEditTask';
 
 export default function ModalEditTaskContainer({ taskId }) {
-    const { task } = useSelector((state) => state.taskReducer);
+    const { task } = useSelector((state) => getTasks(state));
 
     const dispatch = useDispatch();
 
@@ -42,5 +45,4 @@ export default function ModalEditTaskContainer({ taskId }) {
 
 ModalEditTaskContainer.propTypes = {
     taskId: PropTypes.number
-
 };

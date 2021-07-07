@@ -5,13 +5,16 @@ import { useHistory } from 'react-router';
 
 import { actionTransferCategory, actionUpdateCategory } from '../store/category';
 import { actionHideModal } from '../store/modals';
+import { getCategory } from '../store/category/selectors';
 
 import { ModalEditCategory } from '../components/Modal/ModalEditCategory';
+
+import { home } from '../mockData';
 
 export default function ModalEditCategoryContainer({ name, categoryId }) {
     const myList = useSelector((state) => state.taskReducer);
 
-    const { category } = useSelector((state) => state.categoryReducer);
+    const { category } = useSelector((state) => getCategory(state));
 
     const findCategory = category.find((item) => item.id === categoryId);
 
@@ -31,7 +34,7 @@ export default function ModalEditCategoryContainer({ name, categoryId }) {
             categoryId
         }
         dispatch(actionTransferCategory(data));
-        history.push(`/todo/${todoId}`);
+        history.push(home.todoId(todoId));
         handlerHideModal()
     };
 

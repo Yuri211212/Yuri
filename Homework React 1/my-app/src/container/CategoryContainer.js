@@ -4,11 +4,14 @@ import { useLocation, useRouteMatch } from 'react-router';
 
 import { actionCreateCategory, actionEditCategory } from '../store/category';
 import { actionShowModal } from '../store/modals';
+import { getCategory } from '../store/category/selectors';
 
 import { Category } from '../components/Category';
 
+import { home } from '../mockData';
+
 export default function CategoryContainer() {
-    const { category } = useSelector((state) => state.categoryReducer);
+    const { category } = useSelector((state) => getCategory(state));
 
     const [change, setChange] = useState('');
 
@@ -16,7 +19,7 @@ export default function CategoryContainer() {
 
     const location = useLocation();
 
-    const match = useRouteMatch('/todo/:id');
+    const match = useRouteMatch(home.useParams());
 
     const handlerChangeInput = (event) => {
         setChange(event.target.value)

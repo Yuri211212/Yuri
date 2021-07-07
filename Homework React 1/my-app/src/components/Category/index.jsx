@@ -23,9 +23,10 @@ export const Category = ({ category,
             <Input placeholder="Введите категорию" value={change} onChange={(event) => handlerChangeInput(event)} />
             <ButtonMain onClick={handlerAddToCategory} variant="primary" name="Добавить"></ButtonMain>
         </div>
+        <div className="category__list">
         <ListGroup>
             {category.map((item) => {
-                return item.todoID === todoID ? <ListGroup.Item className="category__list" key={item.id}>
+                return item.todoID === todoID ? <ListGroup.Item className="category__list-element" key={item.id}>
                     <div className="category__content">
                         {item.title}
                         <div className="category__group">
@@ -37,6 +38,7 @@ export const Category = ({ category,
                 </ListGroup.Item> : null
             })}
         </ListGroup>
+        </div>
     </div>
 };
 
