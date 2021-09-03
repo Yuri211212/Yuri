@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+   <h1 v-if="show">Видно</h1>
+   <h1 v-if="!show">Не видно</h1>
+   <button @click="change">Менять</button>
+    </div>
+</body>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const App = {
+        data() {
+            return {
+                show: true
+            }
+        },
+        methods: {
+            change(){
+                this.show = !this.show
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+
+</html>
