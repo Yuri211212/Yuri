@@ -21,7 +21,7 @@ export default function reducer(state, { type, payload }) {
         case actionTypes.AUTH_HANDLER_ERROR:
             return { ...state, isLoading: false, success: false, error: payload.message }
         case actionTypes.CLEAR_ERROR:
-            return { ...state, error: null, success: null }
+            return { ...state, error: null }
         case actionTypes.CLEAR_SUCCESS:
                 return { ...state, success: false }
         default:

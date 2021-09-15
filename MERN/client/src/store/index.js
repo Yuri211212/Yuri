@@ -2,9 +2,11 @@ import { applyMiddleware, combineReducers, createStore} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import authReducer from './auth/index';
+import linkReducer from './link/index';
 
 export const rootReducers = combineReducers({
-    authReducer
+    authReducer,
+    linkReducer
 });
 
 const middleware = [thunk];

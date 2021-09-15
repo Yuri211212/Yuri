@@ -4,5 +4,7 @@ export const auth = {
 };
 
 export const common = {
-    home: () => '/home'
+    home: () => '/home',
+    createLink: () => '/home/createLink',
+    findLink: (id) => `/home/findLink/${id}`,
 };

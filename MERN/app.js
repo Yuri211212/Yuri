@@ -2,6 +2,8 @@ const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth/auth.routes');
+const linkRouter = require('./routes/link/link.routes');
+const redirectRouter = require('./routes/redirect/redirect.routes');
 
 const app = express();
 
@@ -11,6 +13,8 @@ const PORT = config.get('port') || 5000;
 const MONGODBURL = config.get('mongodbUrl');
 
 app.use('/api/auth', authRouter);
+app.use('/api/link', linkRouter);
+app.use('/t', redirectRouter);
 
 async function start() {
     try {

@@ -7,20 +7,19 @@ import './styles.scss';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { handlerClearError, handlerClearSuccess } from '../../../store/auth/common';
+import { AuthContext } from '../../../context/AuthContext';
 
 export default function Login(props) {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = props;
     const { user } = useSelector((state) => state.authReducer);
     const { isLoading, error, success } = useSelector((state) => state.authReducer);
-
-    console.log('sdsfsf', user);
-
-    // const authUser = useContext(AuthContext)
-    // useEffect(() => {
-    //    if (user) {
-    //        authUser.login(user.token, user.userId)
-    //    }
-    // });
+    const authUser = useContext(AuthContext);
+    
+    useEffect(() => {
+       if (user) {
+           authUser.login(user.token, user.userId)
+       }
+    });
 
     const dispatch = useDispatch();
 

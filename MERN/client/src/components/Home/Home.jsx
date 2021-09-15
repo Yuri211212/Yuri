@@ -1,18 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { clearUser } from '../../store/auth/login';
+import React, { useContext } from 'react';
+import UiHeader from '../Header/Header';
 
 export default function Home() {
-    const dispatch = useDispatch();
-
-    const logout = () => {
-    dispatch(clearUser())    
-    }
-    
     return (
         <div>
-        Home 
-        <button onClick={logout}>Выход</button>
+        <UiHeader/> 
         </div>
     )
 }

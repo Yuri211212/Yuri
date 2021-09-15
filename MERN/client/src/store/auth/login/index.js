@@ -29,7 +29,7 @@ export default function reducer(state, { type, payload }){
         case actionTypes.SET_AUTH_USER:
             return {...state, user: payload }
         case actionTypes.CLEAR_AUTH_USER:
-            return {...state, user: null }
+            return {...state, user: null, error: null, success: false }
         default:
             return state;
     }
