@@ -6,31 +6,35 @@ import { Tabs, Button } from 'antd';
 import CreateLink from '../CreateLink/CreateLink';
 import ListLinks from '../ListLinks/ListLinks';
 import { actionClearLinks } from '../../store/link/getAllLinks';
+import ListTodos from '../ListTodos/ListTodos';
 
 const { TabPane } = Tabs;
 
 export default function UiHeader() {
-    const { logout } = useContext(AuthContext);
-    const dispatch = useDispatch();
+  const { logout } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
-    const handlerLogout = () => {
-        dispatch(clearUser());
-        dispatch(actionClearLinks());
-        logout()
-    };
+  const handlerLogout = () => {
+    dispatch(clearUser());
+    dispatch(actionClearLinks());
+    logout()
+  };
 
-    const operations = <Button onClick={handlerLogout}>Выход из аккаунта</Button>;
+  const operations = <Button onClick={handlerLogout}>Выход из аккаунта</Button>;
 
-    return (
-<div className="card-container">
-    <Tabs type="card" tabBarExtraContent={operations}>
-      <TabPane tab="Создать ссылку" key="1">
-        <CreateLink/>
-      </TabPane>
-      <TabPane tab="Список всех ссылок" key="2">
-      <ListLinks/>
-      </TabPane>
-    </Tabs>
-  </div>
-    )
-    }
+  return (
+    <div className="card-container">
+      <Tabs type="card" tabBarExtraContent={operations}>
+        <TabPane tab="Создать ссылку" key="1">
+          <CreateLink />
+        </TabPane>
+        <TabPane tab="Список всех ссылок" key="2">
+          <ListLinks />
+        </TabPane>
+        <TabPane tab="Cписок задач" key="3">
+          <ListTodos />
+        </TabPane>
+      </Tabs>
+    </div>
+  )
+}

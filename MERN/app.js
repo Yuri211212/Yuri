@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const authRouter = require('./routes/auth/auth.routes');
 const linkRouter = require('./routes/link/link.routes');
 const redirectRouter = require('./routes/redirect/redirect.routes');
+const todoRouter = require('./routes/todo/todo.routes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ const MONGODBURL = config.get('mongodbUrl');
 app.use('/api/auth', authRouter);
 app.use('/api/link', linkRouter);
 app.use('/t', redirectRouter);
+app.use('/api/todo', todoRouter)
 
 async function start() {
     try {
