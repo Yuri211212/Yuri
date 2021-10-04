@@ -11,19 +11,24 @@ async function registration(req, res) {
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array(), message: 'Некорректные данные' })
+            return res.status(400).json({ errors: errors.array(), message: 'Invalid data' })
         };
         const { email, password, name, surname, age, phone, sex } = req.body;
-        const candidate = await User.findOne({ email });
-        if (candidate) {
-            return res.status(400).json({ message: 'Такой пользователь уже существует' });
+        const candidateCheckEmail = await User.findOne({ email });
+        if (candidateCheckEmail) {
+            return res.status(400).json({ message: 'This email was used already' });
+        }
+        const candidateCheckPhone = await User.findOne({ phone });
+        if (candidateCheckPhone) {
+            return res.status(400).json({ message: 'This number was used already' });
         }
         const hashedPassword = await bcrypt.hash(password, 12);
         const user = new User({ email, password: hashedPassword, name, surname, age, phone, sex });
         await user.save();
-        res.status(201).json({ message: 'Пользователь создан' })
+        res.status(201).json({ message: 'User created' })
     } catch (error) {
-        res.status(500).json({ message: 'При регистрации что-то пошло не так' })
+        console.log(error);
+        res.status(500).json({ message: 'Smth went wrong, please try again' })
     }
 }
 

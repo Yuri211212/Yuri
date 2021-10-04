@@ -3,13 +3,14 @@ import { Switch, Route, Redirect } from 'react-router';
 import { auth, common } from '../mock-routes';
 import RegistrationContainer from '../modules/Registration/container';
 import LoginContainer from '../modules/Login/container';
+import Home from '../components/Home/Home';
 
 export const useRoutes = (isAuthenticated) => {
 if (isAuthenticated) {
     return (
         <Switch>
             <Route path={common.home()} exact >
-            Home
+            <Home/>
             </Route>
             <Redirect to={common.home()}/>
         </Switch>
@@ -18,7 +19,7 @@ if (isAuthenticated) {
     return (
         <Switch>
             <Route path={auth.login()} exact>
-                <LoginContainer/>
+            <LoginContainer/>
             </Route>
             <Route path={auth.registration()} exact>
             <RegistrationContainer/>

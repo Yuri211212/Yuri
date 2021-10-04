@@ -57,6 +57,13 @@ export default ({ values, errors }) => {
                 errors.confirmPassword = "Password doesn't match"
             }
         },
+        title: (value) => {
+            if (!value) {
+                errors.title = "Please type title of the task"
+            } else if (value.length > 30) {
+                errors.title = "This title is too long"
+            }
+        },
     }
     Object.keys(values).forEach(key => rules[key] && rules[key](values[key]));
 }

@@ -1,14 +1,35 @@
-import React from 'react';
-import { Form, Input } from 'antd';
+import React, { useEffect } from 'react';
+import { Form, Input, message } from 'antd';
 import { auth } from '../../../mock-routes';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { validate } from '../../../utils/validate';
 
 import './styles.scss';
+import { handlerClearError, handlerClearSuccess } from '../../../store/auth/common';
 
 export default function Login(props) {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = props;
+    const { success, error } = useSelector((state) => state.authReducer);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        success && message.success("You succefully logged in");
+        error && message.error(error);
+    }, [success, error]);
+
+    const clearStatus = () => {
+        dispatch(handlerClearSuccess());
+        dispatch(handlerClearError());
+    };
+
+    useEffect(() => {
+        return () => {
+            clearStatus();
+        }
+    }, []);
+
     return (
         <>
             <div className="backgroundLogin"> </div>
@@ -46,7 +67,7 @@ export default function Login(props) {
                 </Form>
                 <input type="submit" className="submitLogin" value="Login" onClick={handleSubmit} />
                 <div className="Login-goToRegister">
-                    <Link to={auth.registration()} className="registerUser" >Register now</Link>
+                    <Link to={auth.registration()} className="registerUser" onClick={clearStatus}>Register now</Link>
                 </div>
             </div>
         </>

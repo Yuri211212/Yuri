@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Input } from 'antd';
+import { Form, Input, message } from 'antd';
 import { Field } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { handlerClearError, handlerClearSuccess } from '../../../store/auth/common';
 import { validate } from '../../../utils/validate';
 import { auth } from '../../../mock-routes';
 
@@ -10,6 +12,24 @@ import './styles.scss';
 
 export default function Registration(props) {
     const { values, touched, errors, handleBlur, handleChange, handleSubmit } = props;
+    const { success, error } = useSelector((state) => state.authReducer);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        success && message.success("You succefully created an account");
+        error && message.error(error);
+    }, [success, error]);
+
+    const clearStatus = () => {
+        dispatch(handlerClearSuccess());
+        dispatch(handlerClearError());
+    };
+
+    useEffect(() => {
+        return () => {
+            clearStatus();
+        }
+    }, []);
 
     return (
         <>
@@ -131,7 +151,7 @@ export default function Registration(props) {
                 </Form>
                 <input type="submit" className="submitRegistration" value="Create an account" onClick={handleSubmit}/>
                 <div className="Registration-goToLogin">
-                    <Link to={auth.login()} className="loginUser" >Login page</Link>
+                    <Link to={auth.login()} className="loginUser" onClick={clearStatus}>Login page</Link>
                 </div>
             </div>
         </>

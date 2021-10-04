@@ -10,7 +10,7 @@ surname: {type: String, require: true},
 age: {type: Number, require: true},
 phone: {type: Number, require: true, unique: true},
 sex: {type: String, require: true},
-link: [{type: Types.ObjectId, ref: 'Todo'}],
+todo: [{type: Types.ObjectId, ref: 'Todo'}],
 });
 
 module.exports = model ('User', schema);

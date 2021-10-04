@@ -1,0 +1,1 @@
+export { default as exitIcon } from './exit.svg'

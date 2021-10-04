@@ -1,0 +1,16 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.modalConfirm{
+    @include centerPosition();
+    min-height: 200px;
+    min-width: 400px;
+    background: $backgroundColorDelete;
+    border-radius: 3px;
+    border: 1px solid black;
+    padding: 40px;
+    &__buttons{
+        display: flex;
+        justify-content: space-around;
+    }   
+};
